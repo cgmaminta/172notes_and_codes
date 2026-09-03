@@ -16,3 +16,10 @@ def generateFibonacci(num_elements):
     else:
         reference_fib = generateFibonacci(num_elements-1)
         return reference_fib + [reference_fib[-1] + reference_fib[-2]] 
+
+#Digital Root: Result from adding the digits of a number together repeatedly until the result is only one digit
+def digitalRoot(num):
+    result = 0
+    for i in str(int(num)):
+        result += int(i)
+    return result

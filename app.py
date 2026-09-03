@@ -32,6 +32,7 @@ app.layout = html.Div(
                                     options=[
                                         {"label": "Get Factorial", "value": 1},
                                         {"label": "Generate Fibonacci", "value": 2},
+                                        {"label": "Get Digital Root", "value": 3}
                                     ],
                                 ),
                                 dbc.FormText("Select an operation"),
@@ -48,7 +49,7 @@ app.layout = html.Div(
     ]
 )
 
-from utilities import generateFibonacci, getFactorial
+from utilities import generateFibonacci, getFactorial, digitalRoot
 
 @callback(
     [
@@ -83,12 +84,17 @@ def calculateResults(btncalculate_clicks, num_input, process_select):
 
         if process_select == 1:
             factorial_value = getFactorial(num_input)
-            output_val =  f"The factorial is {factorial_value}."
+            output_val =  f"The factorial is {int(factorial_value)}."
 
         elif process_select == 2:
             fib_sequence = generateFibonacci(num_input)
             fib_sequence_str = [str(i) for i in fib_sequence]
             output_val = f"We get the sequence {", ".join(fib_sequence_str)}" 
+
+        elif process_select == 3:
+            digroot = digitalRoot(num_input)
+            output_val = f"The digital root of {int(num_input)} is {digroot}." 
+
         else:
             output_val = "Please select a process."
 
